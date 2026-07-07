@@ -1,0 +1,54 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script>
+        var numbers = [45,32,67,41,95,78,55,80];
+        var largest = numbers[0];
+
+        //for(var data of numbers){
+        //    if(largest < data){
+        //        largest = data;
+        //    }
+        //}
+
+        //numbers[4];
+
+        //for(var data in numbers){
+        //    if(largest < numbers[data]){
+        //        largest = numbers[data];
+        //    }
+        //    console.log(data)
+        //}
+
+        //console.log(largest);
+
+        var numbers = [45,32,67,41,95,78,55,80];
+
+        console.log(numbers);
+        
+        for(var v of numbers){
+            console.log(v);
+            //numbers.pop();
+            numbers.shift();
+            console.log(v);
+            console.log(numbers);
+        }
+
+        numbers.push(10, 40,30)
+        numbers.unshift(15, 25,35)
+        
+        console.log(numbers);
+
+
+
+    </script>
+</body>
+</html>

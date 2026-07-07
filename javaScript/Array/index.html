@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script>
+
+        var numbers = [];  //empty array
+
+        var numbersNew = new Array()  // empty array
+        
+
+        var numbers = [10,20,30]
+        //var numbersNew = new Array(10, 'User', true)
+
+        //console.log(numbers.length)
+        //console.log(numbersNew)
+
+        numbers[2] = 60;
+        numbers[1] = 50;
+        numbers[3] = 60;
+
+        numbers[8] = 80;
+
+        //console.log(numbers[5])
+        //console.log(numbers.length)
+
+        numbers = [10,20,30,40];
+
+        numbers[numbers.length] = 50;   //10,20,30,40,50
+        numbers[numbers.length] = 60;
+        
+
+        //numbers['name'] = 60;
+
+        //numbers["70"];
+
+        //numbers[4] = 50;
+        numbers.pop()
+
+        numbers.push(70,80)
+
+        
+
+        sum = 0;
+        for(i = 0; i < numbers.length; i++){
+            sum += numbers[i]
+            console.log(numbers[i]);
+        }
+
+
+        console.log('Total Sum - ', sum);
+
+
+        document.write(numbers);
+        //var newData = numbers.toString();
+        console.log(newData);
+
+
+
+
+    </script>
+</body>
+</html>

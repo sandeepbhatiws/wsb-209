@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    
+
+    <script>
+        var message = prompt('Enter ther value (red, green, yellow)');
+
+        message = message.toLowerCase().trim();
+
+
+        if(message == 'red'){
+            document.write('<h1>Red Signal</h1>')
+        } else if(message == 'green'){
+            document.write('<h1>Green Signal</h1>')
+        } else if(message == 'yellow'){
+            document.write('<h1>Yellow Signal</h1>')
+        } else {
+            document.write('<h1>Invalid Value</h1>')
+        }
+
+    </script>
+</body>
+</html>

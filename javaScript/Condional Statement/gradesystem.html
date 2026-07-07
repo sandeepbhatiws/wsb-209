@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade</title>
+</head>
+<body>
+    
+    <script>
+
+        var percentage = prompt('Enter the percentage')
+
+        if(percentage > 100){
+            document.write('Invalid Value')
+        } else if(percentage >= 60){
+            document.write('Grade A')
+        } else if(percentage >= 48 && percentage < 60){
+            document.write('Grade B')
+        } else if(percentage >= 36 && percentage < 48){
+            document.write('Grade C')
+        } else if(percentage >= 0 && percentage < 36){
+            document.write('Grade D')
+        } else {
+            document.write('Failed')
+        }
+
+    </script>
+</body>
+</html>

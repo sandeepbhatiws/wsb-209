@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style(1).css"> -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="outer_footer">
+        <form action="" class="user_enquiry" autocomplete="off">
+            <div class="icon">
+                <i class="fa-brands fa-wpforms"></i>
+                <h2>INQUIRY FORM</h2>
+                <i class="fa-solid fa-moon moon"></i>
+            </div>
+            <div class="error_hand errors">
+                Please fill all the fields
+            </div>
+            <div class="input">
+                <label for="name">Name</label>
+                <input type="text" name="name" placeholder="Enter your name">
+            </div>
+            <div class="input">
+                <label for="email">Email</label>
+                <input type="email" name="email" placeholder="Enter your email">
+            </div>
+            <div class="input">
+                <label for="tel">Mobile No.</label>
+                <input type="text" name="mobile_number" maxlength="10" placeholder="10-digit number">
+            </div>
+            <div class="input">
+                <label for="country">Country</label>
+                <select name="country" class="country">
+                    <option value="">Select Country</option>
+                    <option value="India">India</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Australia">Australia</option>
+                </select>
+            </div>
+            <div class="input">
+                <label for="state">State</label>
+                <select name="state" class="state">
+                    <option value="">Select State</option>
+                </select>
+            </div>
+
+            <button class="button">Submit</button>
+        </form>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <td>S.No.</td>
+                <td>Name</td>
+                <td>Email</td>
+                <td>Mobile Number</td>
+                <td>Country</td>
+                <td>State</td>
+            </tr>
+        </thead>
+        <tbody id="user-data"></tbody>
+    </table>
+
+    <script src="script.js"></script>
+    <!-- <script src="script(1).js"></script> -->
+</body>
+</html>

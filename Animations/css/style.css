@@ -1,0 +1,153 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+a{
+	text-decoration: none;
+	color: black;
+}
+.readMore{
+	text-align: center;
+}
+
+/*@keyframes colorChange {
+	from {
+		background-color: black;
+	}
+	to {
+		background-color: red;
+	}
+}*/
+
+@keyframes colorChange {
+	0% {
+		background-color: black;
+		transform: scale(1);
+	}
+	33.33% {
+		background-color: purple;
+		transform: scale(1.2);
+	}
+	66.66% {
+		background-color: red;
+		transform: scale(1.2);
+	}
+	100% {
+		background-color: black;
+		transform: scale(1);
+	}
+}
+
+@keyframes borderChange{
+	0%{
+		border-top: 2px solid black;
+	}
+	25%{
+		border-right: 2px solid black;
+	}
+	50%{
+		border-bottom: 2px solid black;
+	}
+	75%{
+		border-left: 2px solid black;
+	}
+	100%{
+		border-top: 2px solid black;
+	}
+}
+
+
+.readMore{
+	margin: auto;
+	margin-top: 50px;
+	width: 100px;
+	border: 0px solid black;
+	position: relative;
+	/*transform: scale(1.6);*/
+}
+
+@keyframes readColor{
+	0% {
+		transform: scale(1.2);
+		opacity: 0.5;
+	}
+	50% {
+		transform: scale(1);
+		opacity: 0;
+	}
+	100% {
+		transform: scale(1.2);
+		opacity: 0.5;
+	}
+}
+
+.read{
+	background-color: maroon;
+	width: 100%;
+	height: 40px;
+	border-radius: 15px;
+	animation: readColor;
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+.readMore button{
+	width: 100px;
+	height: 40px;
+	text-align: center;
+	background-color: red;
+	color: white;
+	font-weight: bold;
+	padding: 10px 15px;
+	border: 0px;
+	border-radius: 15px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	/*animation: borderChange;
+	animation-duration: 5s;
+	animation-iteration-count: 1;*/
+	/*animation-delay: 2s;*/
+}
+
+
+@keyframes toogle{
+	0%{
+		left: 0px;
+		bottom: 20px;
+	}
+	25%{
+		left: 20px;
+		bottom: 15px;
+	}
+	50%{
+		left: 40px;
+		bottom: 20px;
+	}
+	75%{
+		left: 50px;
+		bottom: 15px;
+	}
+	100%{
+		left: 80px;
+		bottom: 20px;
+	}
+}
+
+.toogle{
+	overflow: hidden;
+	width: 100px;
+	height: 50px;
+	background-color: red;
+	margin-top: 50px;
+	border-radius: 20px;
+	position: absolute;
+	bottom: -100px;
+	left: 0px;
+	/*animation: toogle;*/
+	animation-duration: 5s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	animation-direction: alternate-reverse;
+}

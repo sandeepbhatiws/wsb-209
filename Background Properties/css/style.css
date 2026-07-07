@@ -1,0 +1,37 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+
+a{
+	text-decoration: none;
+	color: black;
+}
+
+
+.row1{
+	background-image: url('../images/3.jpg');
+	width: 1200px;
+	height: 800px;
+	margin-bottom: 100px;
+	border: 3px solid black;
+	background-repeat: repeat;
+	background-repeat: repeat-x;
+	background-repeat: repeat-y;
+	background-repeat: no-repeat;
+	/*background-position: top right;
+	background-position: right bottom;
+	background-position: center left;
+	background-position: center;*/
+	background-size: cover;
+	/*background-attachment: fixed;*/
+}
+
+.row2{
+	background-image: url('../images/1.jpg');
+	width: 1800px;
+	height: 500px;
+	border: 3px solid black;
+	/*background-position: top right;*/
+	background-size: 100% 150%;
+}

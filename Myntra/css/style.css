@@ -1,0 +1,48 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+a{
+	text-decoration: none;
+	color: black;
+}
+.outer_main{
+	width: 100%;
+}
+.outer_header{
+	width: 100%;
+	border: 5px solid black;
+	box-sizing: border-box;
+	position: sticky;
+	top: 0px;
+}
+.header{
+	width: 1200px;
+	height: 100px;
+	border: 1px solid red;
+	margin: auto;
+	box-sizing: border-box;
+}
+.outer_section{
+	width: 100%;
+	border: 2px solid blue;
+	height: 2000px;
+	box-sizing: border-box;
+}
+.whatsupicon{
+	font-size: 48px;
+	color: red;
+}
+
+.whastup{
+	background-color: blue;
+	display: inline-block;
+	padding: 12px 10px;
+	border-radius: 50%;
+	position: fixed;
+	/*top: 800px;
+	left: 1750px;*/
+
+	bottom: 50px;
+	right: 60px;
+}

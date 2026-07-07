@@ -1,0 +1,58 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.row{
+    width: 1000px;
+    margin: auto;
+    margin-top: 100px;
+}
+.row h1{
+    text-align: center;
+    margin-bottom: 30px;
+}
+.form-control{
+    width: 70%;
+    margin: auto;
+    margin-bottom: 15px;
+}
+
+.form-control label{
+    font-weight: bold;
+    font-size: 18px;
+}
+.form-control input, select{
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+form{
+    padding: 15px;
+    box-shadow: 0px 0px 2px gray;
+    border-radius: 15px;
+}
+.form-control button{
+    margin: 25px;
+    padding: 15px;
+    background-color: white;
+    box-shadow: 0px 0px 2px black;
+    border: 0px;
+    border-radius: 10px;
+    margin-left: 0px;  
+    cursor: pointer; 
+}
+.error{
+    display: none;
+}
+
+.error-message{
+    background: rgba(255, 0, 0, 0.6);
+    border-radius: 10px;
+    padding: 15px;
+    color: white;
+    width: 70%;
+    margin: auto;
+    margin-bottom: 15px;
+}

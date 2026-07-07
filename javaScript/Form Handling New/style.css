@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ── Light Mode Variables ── */
+:root {
+    --bg-color:     #f0f2f5;
+    --card-bg:      #ffffff;
+    --card-border:  #e2e5ea;
+    --text-color:   #1e293b;
+    --label-color:  #64748b;
+    --divider:      #e8eaed;
+    --input-bg:     #f8fafc;
+    --input-border: #e2e8f0;
+    --input-text:   #1e293b;
+    --placeholder:  #b0bec5;
+    --select-text:  #475569;
+    --table-bg:     #ffffff;
+    --table-border: #e2e8f0;
+    --table-text:   #334155;
+    --row-hover:    #f1f5f9;
+}
+
+/* ── Dark Mode Variables ── */
+body.dark {
+    --bg-color:     #111318;
+    --card-bg:      #1c1f2a;
+    --card-border:  #2a2d3a;
+    --text-color:   #e2e8f0;
+    --label-color:  #64748b;
+    --divider:      #2a2d3a;
+    --input-bg:     #13151f;
+    --input-border: #2a2d3a;
+    --input-text:   #e2e8f0;
+    --placeholder:  #4a5568;
+    --select-text:  #94a3b8;
+    --table-bg:     #1c1f2a;
+    --table-border: #2a2d3a;
+    --table-text:   #94a3b8;
+    --row-hover:    #13151f;
+}
+
+body {
+    font-family: "Josefin Sans", sans-serif;
+    min-height: 100vh;
+    background-color: var(--bg-color);   /* ✅ sirf ek baar */
+    padding: 40px 0;
+    transition: background-color 0.3s ease;
+}
+
+.outer_footer {
+    display: flex;
+    justify-content: center;
+    margin: 15px auto;
+    padding: 32px 36px;
+    border-radius: 10px;
+    background: var(--card-bg);          /* ✅ card-bg, card-border nahi */
+    width: 620px;
+    border: 1px solid var(--card-border);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+    transition: background 0.3s, border-color 0.3s;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 14px;
+}
+
+.icon {
+    width: 100%;
+    display: flex;
+    padding: 0 0 18px 0;
+    border-bottom: 1.5px solid var(--divider);   /* ✅ variable */
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+}
+
+.icon h2 {
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: var(--text-color);            /* ✅ variable */
+}
+
+.icon .fa-wpforms {
+    color: var(--text-color);            /* ✅ variable */
+    font-size: 20px;
+}
+
+.moon {
+    cursor: pointer;
+    color: var(--label-color);           /* ✅ variable */
+    transition: color 0.2s;
+}
+
+.moon:hover {
+    color: var(--text-color);            /* ✅ variable */
+}
+
+.input {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+}
+
+.input label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--label-color);           /* ✅ variable */
+    width: 110px;
+    min-width: 110px;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+}
+
+.input input,
+.input select {
+    flex: 1;
+    padding: 10px 14px;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 14px;
+    color: var(--input-text);
+    background: var(--input-bg);
+    border: 1.5px solid var(--input-border);
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.3s, color 0.3s;
+}
+
+.input input::placeholder {
+    color: var(--placeholder);           /* ✅ variable */
+}
+
+.input input:focus,
+.input select:focus {
+    border-color: var(--text-color);
+    background: var(--card-bg);          /* ✅ white hardcode nahi */
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+}
+
+.input select {
+    cursor: pointer;
+    color: var(--select-text);           /* ✅ variable */
+}
+
+.input select option {
+    color: var(--input-text);            /* ✅ variable */
+    background: var(--card-bg);          /* ✅ variable */
+}
+
+.error_hand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: 6px;
+    background: #fef2f2;
+    border: 1.5px solid #fca5a5;
+    color: #dc2626;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.errors {
+    display: none;
+}
+
+.button {
+    align-self: flex-end;
+    padding: 11px 36px;
+    background: var(--text-color);       /* ✅ variable */
+    color: var(--card-bg);               /* ✅ variable */
+    font-size: 14px;
+    font-weight: 700;
+    font-family: "Josefin Sans", sans-serif;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.18s, transform 0.15s;
+    margin-top: 6px;
+}
+
+.button:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+}
+
+.button:active {
+    transform: translateY(0);
+}
+
+table {
+    width: 65%;
+    margin: 30px auto;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 14px;
+    background: var(--table-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--table-border);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    transition: background 0.3s, border-color 0.3s;
+}
+
+thead {
+    background: var(--text-color);       /* ✅ variable */
+    color: var(--card-bg);               /* ✅ variable */
+    font-size: 12px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    transition: background 0.3s;
+}
+
+th,
+td {
+    border: 1px solid var(--table-border);
+    padding: 12px 16px;
+    color: var(--table-text);
+    transition: color 0.3s, background 0.3s;
+}
+
+thead td {
+    border-color: transparent;
+    color: var(--card-bg);               /* ✅ variable */
+}
+
+tbody tr {
+    transition: background 0.15s;
+}
+
+tbody tr:hover td {
+    background: var(--row-hover);
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            background-color: black;
+            color: white;
+            padding: 15px;
+            margin-left: 15px;
+            border-radius: 15px;
+            border: 0px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button class="days">0 Days</button>
+    <button class="start">0 Hours</button>
+    <button class="stop">0 Minutes</button>
+    <button class="reset">0 Seconds</button>
+
+    <div class="counter">0</div>
+
+    <script>
+        var x;
+        var counter = 0;
+
+        document.querySelector('.start').addEventListener('click', () => {
+            x = setInterval(() => {
+                currentDate = new Date();
+
+                console.log(currentDate);
+                counter++;
+                document.querySelector('.counter').innerText = counter;
+            }, 1000)
+        })
+
+        document.querySelector('.stop').addEventListener('click', () => {
+            clearInterval(x);
+        })
+
+        document.querySelector('.reset').addEventListener('click', () => {
+            clearInterval(x);
+            counter = 0;
+            document.querySelector('.counter').innerText = counter;
+        })
+
+        document.querySelector('.reset').addEventListener('dblclick', () => {
+            clearInterval(x);
+            counter = 0;
+            document.querySelector('.counter').innerText = counter;
+
+            x = setInterval(() => {
+                counter++;
+                document.querySelector('.counter').innerText = counter;
+            }, 1000)
+        })
+
+
+
+        
+        
+
+        //console.log(currentDate);
+        //console.log(currentDate.getDate());
+        //console.log(currentDate.getFullYear());
+        //console.log(currentDate.getDay());
+        //console.log(currentDate.getMonth()+1);
+        //console.log(currentDate.getHours());
+
+        setInterval(() => {
+            currentDate = new Date();
+
+            offerDate = '2026/5/17';
+            offerDate = new Date(offerDate);
+
+            difference = offerDate - currentDate;
+
+            document.querySelector('.days').innerText = Math.floor(difference/1000/60/60/24)+ ' Days'
+            document.querySelector('.start').innerText = Math.floor((difference/1000/60/60) % 24)+ ' Hours'
+            document.querySelector('.stop').innerText = Math.floor((difference/1000/60) % 60)+ ' Minutes'
+            document.querySelector('.reset').innerText = Math.floor((difference/1000) % 60)+ ' Seconds'
+
+            //console.log('Milli Seconds - ',difference); //milliseconds
+            //console.log('Seconds - ',difference/1000);  // seconds
+            //console.log('Minutes - ',difference/1000/60);  // minutes
+            //console.log('Hours - ',difference/1000/60/60);  // hours
+            //.log('Days - ',difference/1000/60/60/24);  // days
+        }, 1000)
+
+    </script>
+</body>
+</html>

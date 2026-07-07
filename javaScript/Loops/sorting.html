@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        var numbers = [5,7,3,2,8,6,7,4,11,17,34,15,20];
+
+        numbers.sort((a,b) => a-b);
+
+        numbers.sort((a,b) => b-a);
+
+        // console.log(numbers)
+
+
+        var names = ['Rohit', 'Sumit', 'Ravi', 'Ankit', 'Vijay', 'manish']
+        
+        names.sort((a,b) => a.localeCompare(b) );
+        //names.sort((a,b) => b.localeCompare(a) );
+        
+        //console.log(names)
+
+        var numbers = [5,7,3,2,8,6,7,4,11,17,34,15,20];
+
+        console.log(numbers);
+
+        numbers.push(200)
+
+        numbers.splice(30,40);
+
+        numbers.push(100)
+
+        console.log(numbers);
+
+        
+    </script>
+
+</body>
+</html>

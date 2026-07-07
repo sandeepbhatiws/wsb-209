@@ -1,0 +1,24 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.row{
+    max-width: 1200px;
+    margin: auto;
+}
+
+.column{
+    border: 1px solid gray;
+    padding: 15px;
+    border-radius: 15px;
+    margin-top: 50px;
+    font-size: 20px;
+}
+.output{
+    border: 1px solid gray;
+    padding: 15px;
+    border-radius: 15px;
+    margin-top: 50px;
+    font-size: 20px;
+}

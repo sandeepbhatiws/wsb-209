@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script>
+        var number = prompt('Enter the number');
+        var sum = 0;
+
+
+        for(var i = 1; i <= number; i++){
+            if(i % 2 == 0){
+                document.write(i+'<br>')
+                //sum = sum + i;
+
+
+                sum += i;   // sum = sum + i; 
+            }
+        }
+
+
+        document.write('Total Sum - '+sum)
+
+    </script>
+</body>
+</html>

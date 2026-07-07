@@ -1,0 +1,296 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+body {
+	font-family: "Inter", sans-serif;
+}
+
+.outer_header {
+	width: 100%;
+	box-shadow: 0px 0px 3px 1px dimgray;
+}
+
+.innner_header {
+	max-width: 1170px;
+	margin: auto;
+	display: flex;
+	align-items: center;
+	padding: 22px 15px;
+	box-sizing: border-box;
+	justify-content: space-between;
+}
+
+.header_right {
+	display: flex;
+	gap: 15px;
+}
+
+.outer_chat {
+	display: flex;
+	align-items: center;
+	border-radius: 8px;
+	border-width: 1px;
+	padding: 10px 18px;
+	gap: 10px;
+	background: #FFFFFF;
+	border: 1px solid #27AE60;
+	box-shadow: 0px 1px 2px 0px #1018280D;
+	font-weight: 400;
+	font-style: Regular;
+	font-size: 16px;
+	line-height: 24px;
+	letter-spacing: 0%;
+	text-transform: capitalize;
+	color: #27AE60;
+}
+
+.outer_chat img {
+	margin-top: 5px;
+}
+
+.call_us {
+	border-radius: 8px;
+	border-width: 1px;
+	padding: 10px 18px;
+	background: linear-gradient(93.77deg, #0ACEFE -6.36%, #2699FB 50.16%);
+	border: 1px solid;
+	border-image-source: linear-gradient(93.77deg, #0ACEFE -6.36%, #2699FB 50.16%);
+	box-shadow: 0px 1px 2px 0px #1018280D;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 24px;
+	letter-spacing: 0%;
+	color: #FFFFFF;
+}
+
+
+/* --------------------------------------------section one-------------------------------------------------- */
+
+.section1 {
+	display: flex;
+	max-width: 1170px;
+	align-items: center;
+	padding: 15px;
+	padding-top: 25px;
+	box-sizing: border-box;
+	margin: auto;
+}
+
+.sectiononeleft {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+
+
+	flex-basis: 50.5%;
+}
+
+
+
+.section1heading {
+
+	font-weight: 700;
+
+	font-size: 52px;
+
+	line-height: 68px;
+
+
+}
+
+.Dmheading {
+	color: #2699FB;
+	position: relative;
+}
+
+.Dmheading img {
+	width: 100%;
+	bottom: 0px;
+	position: absolute;
+	left: 0px;
+}
+
+.sectiononeleft p {
+
+	font-weight: 400;
+
+	color: #0A2134;
+
+
+	font-size: 22px;
+
+	line-height: 35px;
+
+
+}
+
+.sectiononeleft li {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+
+
+	font-weight: 400;
+
+	font-size: 22px;
+
+	color: #0A2134;
+
+
+
+
+}
+
+.sectiononeleftrow4 {
+	display: flex;
+	gap: 30px;
+	padding-top: 15px;
+
+}
+
+.sectiononeleftrow4 button {
+	flex-basis: 50%;
+	padding: 21px;
+	border-radius: 8px;
+
+}
+
+.bookbtn {
+	background: linear-gradient(93.77deg, #0ACEFE -6.36%, #2699FB 50.16%);
+	color: #FFFFFF;
+
+	font-size: 20px;
+
+	border: 1px solid;
+
+	border-image-source: linear-gradient(93.77deg, #0ACEFE -6.36%, #2699FB 50.16%);
+
+	font-weight: 700;
+
+}
+
+.downloadbtn {
+
+	font-weight: 500;
+
+	font-size: 18px;
+
+	border: 1px solid #D0D5DD;
+
+	background-color: white;
+
+
+}
+
+.sectiononeleftlist {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.sectiononeright {
+	padding: 30px 71px;
+	background-color: #E9F5FF;
+	border-radius: 50%;
+	flex-basis: 47.2%;
+
+	height: 552px;
+}
+
+.formcontainer {
+	background-color: white;
+	padding: 35px;
+box-shadow: 0px 1px 2px 0px #1018280F;
+
+
+}
+
+.formcontainer h2 {
+
+	font-weight: 700;
+
+	font-size: 24px;
+
+	color: #2699FB;
+
+}
+
+.formcontainer p {
+
+	font-weight: 400;
+
+	color: #2699FB;
+
+	line-height: 24px;
+
+
+}
+
+.formcontainer label {
+
+	font-weight: 500;
+	font-size: 14px;
+	padding-bottom: 5px;
+
+
+
+}
+
+.formcontainer input {
+	width: 100%;
+	border-radius: 8px;
+	margin-top: 5px;
+	border: 1px solid #D0D5DD;
+	padding: 13.5px;
+	outline: none;
+}
+
+.formcontainer form {
+	display: flex;
+	flex-direction: column;
+	gap: 23px;
+	
+
+
+
+}
+
+.formcontainer button {
+	border-radius: 8px;
+	background: linear-gradient(93.77deg, #0ACEFE -6.36%, #2699FB 50.16%);
+	border: 1px solid;
+
+	border-image-source: linear-gradient(93.77deg, #0ACEFE -6.36%, #2699FB 50.16%);
+	padding: 13.5px;
+
+	font-weight: 500;
+	color: white;
+
+
+
+
+}
+
+.mobilecontainer{
+	display: flex;
+	border-radius: 8px;
+	border: 1px solid #D0D5DD;
+}
+
+.mobilecontainer select {
+	border: none;
+	border-radius: 8px;
+}
+
+.mobilecontainer input{
+	border: none;
+}

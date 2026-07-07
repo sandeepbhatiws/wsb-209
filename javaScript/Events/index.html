@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <style>
+        .image{
+            width: 700px;
+            margin: auto;
+        }
+        .image img{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="image">
+        <!-- <img src="images/banner1.png" id="banner" onclick="changeImage()"/> -->
+        <!-- <img src="images/banner1.png" id="banner" onmouseover="changeImage(1)" onmouseout="changeImage(2)"/> -->
+        <!-- <img src="images/banner1.png" id="banner" onmouseenter="changeImage(1)" onmouseleave="changeImage(2)"/> -->
+         <!-- <img src="images/banner1.png" id="banner" onmousemove="changeImage(1)"/> -->
+        <!-- <img src="images/banner1.png" id="banner" onmousedown="changeImage(1)" onmouseup="changeImage(2)"/> -->
+        <!-- <img src="images/banner1.png" id="banner" onmousewheel="changeImage(1)"/> -->
+
+
+        <input id="name" onkeyup="getValue()"/>
+    </div>
+
+
+    <script>
+
+        const getValue = () => {
+            const name = document.getElementById('name').value;
+            console.log(name)
+        }
+
+        const changeImage = (value) => {
+            console.log('Hello')
+            if(value == 1){
+                document.getElementById('banner').src = 'images/banner2.png';
+            } else {
+                document.getElementById('banner').src = 'images/banner1.png'
+            }
+        }
+    </script>
+</body>
+</html>

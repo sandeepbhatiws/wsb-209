@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+    
+    <div class="row">
+        <h1>User Enquiry</h1>
+
+        <form class="user_enquiry">
+
+            <div class="error-message error">Please fill all the fields</div>
+
+            <div class="form-control">
+                <label>Name</label>
+                <input type="text" name="name" autocomplete="off"/>
+            </div>
+
+            <div class="form-control">
+                <label>Email</label>
+                <input type="text" name="email" autocomplete="off"/>
+            </div>
+
+            <div class="form-control">
+                <label>Mobile Number</label>
+                <input type="text" name="mobile_number" autocomplete="off"/>
+            </div>
+
+            <div class="form-control">
+                <label>Country</label>
+                <select name="country_name" class="country">
+                    <option value="">Select Country</option>
+                    <option value="India">India</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Austraila">Austraila</option>
+                </select>
+            </div>
+
+            <div class="form-control">
+                <label>State</label>
+                <select name="state_name" class="state">
+                    <option value="">Select State</option>
+                </select>
+            </div>
+
+            <div class="form-control">
+                <button>Submit</button>
+            </div>
+        </form>
+    </div>
+
+
+    <script src="js/cutom.js"></script>
+</body>
+</html>

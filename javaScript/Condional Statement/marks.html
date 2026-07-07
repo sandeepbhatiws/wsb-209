@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        var english = Number(prompt('Enter the marks in english'))
+        var hindi   = Number(prompt('Enter the marks in hindi'))
+        var maths   = Number(prompt('Enter the marks in maths'))
+
+        var totalSum = english + hindi + maths;
+        var percentage = (totalSum/300)*100
+
+        var formula = (200 * 9/5) + 32;
+
+
+        if(english > 100 || hindi > 100 || maths > 100){
+            document.write('<h1>Invalid Value</h1>')
+        } else if(english < 0 || hindi < 0 || maths < 0){
+            document.write('<h1>marks must be greather than 0</h1>')
+        } else if(percentage >= 60){
+            document.write('<h1>First Division</h1>')
+        }
+    </script>
+
+</body>
+</html>

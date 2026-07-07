@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+
+        var output = fetch('https://dummyjson.com/posts');
+
+        new Promise((accept, reject) => {
+            accept(output)
+        })
+        .then((result) => {
+            new Promise((complete, incomplete) => {
+                complete(result.json())
+            })
+            .then((res) => {
+                //console.log(res.posts)
+            })
+        })
+        .catch(() => {
+            //console.log('Promise Incomplete')
+        })
+
+
+        fetch('https://dummyjson.com/posts')
+        .then((result) => {
+            return result.json()
+        })
+        .then((result) => {
+            //console.log(result.posts)
+        })
+        .catch(() =>
+            console.log('Not Working')
+        )
+
+
+        fetch('https://dummyjson.com/posts')
+        .then(async(result) => {
+            var output = await result.json();
+            //console.log(output.posts)
+        })
+        .catch(() =>
+            console.log('Not Working')
+        )
+
+
+
+
+
+        const displayData = async() => {
+            try {
+                var output = await fetch('https://dummyjson.com/posts');
+                output = await output.json();
+                console.log(output);
+            } catch{
+
+            }
+
+
+            
+        }
+
+        displayData()
+
+    </script>
+</body>
+</html>

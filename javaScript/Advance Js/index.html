@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script>
+        var userInfo = {
+            username : 'Test',
+            useremail : 'test@gmail.com',
+            mobile_number : 1234567890,
+            address : {
+                country : 'India',
+                city : 'Jodhpur'
+            }
+        }
+
+        var { username, useremail,address } = userInfo;
+
+        var {country, city} = address;
+
+        function getUserInfo({ country }){
+            console.log(country)
+        }
+
+        getUserInfo(address)
+
+
+        var numbers = [4,5,6,[7,8]];
+
+        var newdata = [...numbers];
+        
+
+        //console.log(newdata);
+
+
+
+        var numbers = [[1,2], [3,4]];
+        var newArray = [];
+
+        numbers.forEach((v) => {
+            v.forEach((data) => {
+                newArray = [...newArray, data];
+                console.log(newArray);
+            })
+        })
+        
+
+
+    </script>
+</body>
+</html>
