@@ -1,10 +1,45 @@
-import React, { useState } from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import { MdOutlineDriveFolderUpload } from "react-icons/md";
+import { useNavigate, useNavigation, useParams } from 'react-router-dom';
+import iziToast from "izitoast";
 
 export default function AddCategory() {
 
     let [errors, setErrors] = useState([]);
     let [SelectedImage, setSelectedImage] = useState("");
+    const [categoryId, setCategoryId] = useState('');
+    const [categoryDetails, setCategoryDetails] = useState('');
+
+    const params = useParams();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (params.id) {
+            setCategoryId(params.id)
+
+            axios.post(`${import.meta.env.VITE_API_URL}/categories/details/${params.id}`)
+                .then((result) => {
+                    if (result.data._status) {
+                        setCategoryDetails(result.data._data);
+                        if(result.data._data.image){
+                            setSelectedImage(result.data._image_path+result.data._data.image)
+                        }
+                    } else {
+                        setCategoryDetails('');
+                    }
+                })
+                .catch((error) => {
+                    iziToast.error({
+                        title: "Error",
+                        message: "Something went wrong.",
+                        position: "topRight",
+                    });
+                })
+        } else {
+            setCategoryId('')
+        }
+    }, [params]);
 
     let handleimagechange = (event) => {
         const file = event.target.files[0];
@@ -15,22 +50,20 @@ export default function AddCategory() {
             };
             reader.readAsDataURL(file);
         }
+
+        ErrorHandler(event);
     };
 
     let ErrorHandler = (event) => {
         let fieldName = event.target.name;
 
         if (event.target.value === "") {
-
             if (!errors.includes(fieldName)) {
                 setErrors([...errors, fieldName]);
             }
-
         } else {
-
             let updated = errors.filter((v) => v !== fieldName);
             setErrors(updated);
-
         }
     };
 
@@ -38,13 +71,15 @@ export default function AddCategory() {
         event.preventDefault();
 
         let form = event.target;
-        let fields = form.querySelectorAll('input , textarea')
+        let fields = form.querySelectorAll('input')
 
         let newErrors = [];
 
         fields.forEach((field) => {
-            if (!field.value.trim()) {
-                newErrors.push(field.name);
+            if(field.name != 'image'){
+                if (!field.value.trim()) {
+                    newErrors.push(field.name);
+                }
             }
         });
 
@@ -52,11 +87,47 @@ export default function AddCategory() {
             newErrors.push("image");
         }
 
+        // console.log(newErrors);
+
         newErrors = [...new Set(newErrors)];
         setErrors(newErrors);
 
         if (newErrors.length === 0) {
-            event.target.reset()
+
+            var dataSave = event.target;
+
+            if (categoryId) {
+                var apiUrl = axios.put(`${import.meta.env.VITE_API_URL}/categories/update/${categoryId}`, dataSave)
+            } else {
+                var apiUrl = axios.post(`${import.meta.env.VITE_API_URL}/categories/create`, dataSave)
+            }
+
+            apiUrl.then((result) => {
+                if (result.data._status) {
+                    iziToast.success({
+                        title: "Success",
+                        message: result.data._message,
+                        position: "topRight",
+                    });
+
+                    navigate('/category/view/')
+                } else {
+                    iziToast.error({
+                        title: "Error",
+                        message: result.data._message,
+                        position: "topRight",
+                    });
+                }
+            })
+                .catch((error) => {
+                    iziToast.error({
+                        title: "Error",
+                        message: "Something went wrong.",
+                        position: "topRight",
+                    });
+                })
+
+            // event.target.reset()
         }
     };
 
@@ -71,7 +142,7 @@ export default function AddCategory() {
                         <li>/</li>
                         <li><a className="text-md font-medium hover:text-indigo-600">Category</a></li>
                         <li>/</li>
-                        <li className="font-semibold text-gray-900">Add Category</li>
+                        <li className="font-semibold text-gray-900">{ !categoryId ? 'Add Category' : 'Update Category' }</li>
                     </ol>
                 </nav>
 
@@ -80,15 +151,13 @@ export default function AddCategory() {
                 <div className="w-full min-h-[680px] px-5 bg-slate-50 py-10">
 
                     <div className="mx-auto">
-
                         <h3 className="text-[24px] font-semibold 
                         bg-gradient-to-r from-indigo-600 to-indigo-500
                         py-3 px-5 rounded-t-lg text-white border border-indigo-500">
 
-                            Add New Category
+                            { !categoryId ? 'Add Category' : 'Update Category' }
 
                         </h3>
-
 
                         <form
                             onSubmit={formhandler}
@@ -131,6 +200,7 @@ export default function AddCategory() {
 
                                     <input
                                         type="file"
+                                        name='image'
                                         accept="image/*"
                                         onChange={handleimagechange}
                                         className="absolute inset-0 z-10 opacity-0 cursor-pointer"
@@ -156,6 +226,7 @@ export default function AddCategory() {
                                     <input
                                         type="text"
                                         name="name"
+                                        defaultValue={categoryDetails.name}
                                         autoComplete="off"
                                         onKeyUp={ErrorHandler}
                                         className="text-[17px] border border-slate-300 text-gray-900 rounded-lg 
@@ -184,6 +255,8 @@ export default function AddCategory() {
                                         type="number"
                                         name="order"
                                         min={1}
+                                        defaultValue={categoryDetails.order}
+                                        onKeyUp={ErrorHandler}
                                         autoComplete="off"
                                         className="text-[17px] border border-slate-300 text-gray-900 rounded-lg 
                                         focus:ring-2 focus:ring-indigo-400 focus:border-indigo-500
@@ -191,8 +264,13 @@ export default function AddCategory() {
                                         placeholder="Enter order number"
                                     />
 
-                                </div>
+                                    {errors.includes("order") && (
+                                        <p className="text-red-600 text-sm mt-1">
+                                            Order is required
+                                        </p>
+                                    )}
 
+                                </div>
 
                                 <div className='flex justify-end'>
 
@@ -203,19 +281,13 @@ export default function AddCategory() {
                                         focus:ring-4 focus:ring-indigo-300
                                         font-medium rounded-lg text-md px-6 py-2.5 shadow-sm transition-all"
                                     >
-                                        Submit
+                                        { categoryId ? 'Update' : 'Submit' }
                                     </button>
-
                                 </div>
-
                             </div>
-
                         </form>
-
                     </div>
-
                 </div>
-
             </section>
         </>
     )

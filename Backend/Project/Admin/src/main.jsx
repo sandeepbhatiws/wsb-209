@@ -42,10 +42,12 @@ createRoot(document.getElementById('root')).render(
         </Route>
         <Route path='category'>
           <Route path='add' element={<AddCategory />} />
+          <Route path='update/:id' element={<AddCategory />} />
           <Route path='view' element={<ViewCategory />} />
         </Route>
         <Route path='sub-category'>
           <Route path='add' element={<AddSubCategory />} />
+          <Route path='update/:id' element={<AddSubCategory />} />
           <Route path='view' element={<ViewSubCattegory />} />
         </Route>
         <Route path='sub-sub-category'>
@@ -54,6 +56,7 @@ createRoot(document.getElementById('root')).render(
         </Route>
         <Route path='product'>
           <Route path='add' element={<AddProduct />} />
+          <Route path='update/:id' element={<AddProduct />} />
           <Route path='view' element={<ViewProducts />} />
         </Route>
         <Route path='testimonial'>

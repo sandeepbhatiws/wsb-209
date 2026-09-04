@@ -56,7 +56,7 @@ export default function AddMaterial() {
     if (newErrors.length === 0) {
 
       var dataSave = {
-        name : event.target.name.value,
+        name : event.target.material_name.value,
         order : event.target.order.value,
       };
 
@@ -94,7 +94,6 @@ export default function AddMaterial() {
       // event.target.reset()
     }
   };
-
 
   let ErrorHandler = (event) => {
     let fieldName = event.target.name;
@@ -162,7 +161,7 @@ export default function AddMaterial() {
 
                 <input
                   type="text"
-                  name="name"
+                  name="material_name"
                   defaultValue={materialDetails.name}
                   autoComplete="off"
                   onKeyUp={ErrorHandler}

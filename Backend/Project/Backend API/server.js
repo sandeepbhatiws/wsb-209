@@ -16,6 +16,7 @@ server.use(express.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 server.use(express.urlencoded({ extended: true }));
 
+server.use('/uploads', express.static('uploads'));
 
 server.get('/', (request, response) => {
     response.send('Server is working fine !')
@@ -26,8 +27,13 @@ require('./src/routes/admin/default.routes.js')(server);
 require('./src/routes/admin/material.routes.js')(server);
 require('./src/routes/admin/color.routes.js')(server);
 require('./src/routes/admin/category.routes.js')(server);
+require('./src/routes/admin/subCategory.routes.js')(server);
+require('./src/routes/admin/subSubCategory.routes.js')(server);
+require('./src/routes/admin/product.routes.js')(server);
 
 
+// Website URls
+require('./src/routes/website/user.routes.js')(server);
 
 
 server.listen(8000, () => {

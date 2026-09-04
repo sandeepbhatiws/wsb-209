@@ -1,10 +1,68 @@
-import React, { useState } from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import { MdOutlineDriveFolderUpload } from "react-icons/md";
+import { useNavigate, useNavigation, useParams } from 'react-router-dom';
+import iziToast from "izitoast";
 
 export default function AddSubCategory() {
 
     let [errors, setErrors] = useState([]);
     let [SelectedImage, setSelectedImage] = useState("");
+    const [subCategoryId, setSubCategoryId] = useState('');
+    const [parentCategoryId, setParentCategoryId] = useState('');
+    const [subCategoryDetails, setSubCategoryDetails] = useState('');
+    const [parentCategories, setParentCategories] = useState([]);
+
+    useEffect(() => {
+        axios.post(`${import.meta.env.VITE_API_URL}/sub-categories/parent-categories`, {
+            id : parentCategoryId
+        })
+        .then((result) => {
+            if (result.data._status) {
+            setParentCategories(result.data._data);
+            } else {
+            setParentCategories([]);
+            }
+        })
+        .catch((error) => {
+            iziToast.error({
+            title: "Error",
+            message: "Something went wrong.",
+            position: "topRight",
+            });
+        })
+    }, [parentCategoryId])
+
+    const params = useParams();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (params.id) {
+            setSubCategoryId(params.id)
+
+            axios.post(`${import.meta.env.VITE_API_URL}/sub-categories/details/${params.id}`)
+                .then((result) => {
+                    if (result.data._status) {
+                        setSubCategoryDetails(result.data._data);
+                        setParentCategoryId(result.data._data.parent_category_id._id);
+                        if(result.data._data.image){
+                            setSelectedImage(result.data._image_path+result.data._data.image)
+                        }
+                    } else {
+                        setSubCategoryDetails('');
+                    }
+                })
+                .catch((error) => {
+                    iziToast.error({
+                        title: "Error",
+                        message: "Something went wrong.",
+                        position: "topRight",
+                    });
+                })
+        } else {
+            setSubCategoryId('')
+        }
+    }, [params]);
 
     let handleimagechange = (event) => {
         const file = event.target.files[0];
@@ -15,37 +73,36 @@ export default function AddSubCategory() {
             };
             reader.readAsDataURL(file);
         }
+
+        ErrorHandler(event);
     };
-let ErrorHandler = (event) => {
 
-    let fieldName = event.target.name;
-    let value = event.target.value;
+    let ErrorHandler = (event) => {
+        let fieldName = event.target.name;
 
-    if (!value || value.trim() === "") {
-
-        if (!errors.includes(fieldName)) {
-            setErrors([...errors, fieldName]);
+        if (event.target.value === "") {
+            if (!errors.includes(fieldName)) {
+                setErrors([...errors, fieldName]);
+            }
+        } else {
+            let updated = errors.filter((v) => v !== fieldName);
+            setErrors(updated);
         }
-
-    } else {
-
-        let updated = errors.filter((v) => v !== fieldName);
-        setErrors(updated);
-
-    }
-};
+    };
 
     let formhandler = (event) => {
         event.preventDefault();
 
         let form = event.target;
-        let fields = form.querySelectorAll('input , textarea , select')
+        let fields = form.querySelectorAll('input, select')
 
         let newErrors = [];
 
         fields.forEach((field) => {
-            if (!field.value.trim()) {
-                newErrors.push(field.name);
+            if(field.name != 'image'){
+                if (!field.value.trim()) {
+                    newErrors.push(field.name);
+                }
             }
         });
 
@@ -57,10 +114,40 @@ let ErrorHandler = (event) => {
         setErrors(newErrors);
 
         if (newErrors.length === 0) {
-            event.target.reset()
+            var dataSave = event.target;
+
+            if (subCategoryId) {
+                var apiUrl = axios.put(`${import.meta.env.VITE_API_URL}/sub-categories/update/${subCategoryId}`, dataSave)
+            } else {
+                var apiUrl = axios.post(`${import.meta.env.VITE_API_URL}/sub-categories/create`, dataSave)
+            }
+
+            apiUrl.then((result) => {
+                if (result.data._status) {
+                    iziToast.success({
+                        title: "Success",
+                        message: result.data._message,
+                        position: "topRight",
+                    });
+
+                    navigate('/sub-category/view/')
+                } else {
+                    iziToast.error({
+                        title: "Error",
+                        message: result.data._message,
+                        position: "topRight",
+                    });
+                }
+            })
+            .catch((error) => {
+                iziToast.error({
+                    title: "Error",
+                    message: "Something went wrong.",
+                    position: "topRight",
+                });
+            })
         }
     };
-
 
     return (
         <>
@@ -73,7 +160,7 @@ let ErrorHandler = (event) => {
                         <li>/</li>
                         <li><a className="text-md font-medium hover:text-indigo-600">Sub Category</a></li>
                         <li>/</li>
-                        <li className="font-semibold text-gray-900">Add Sub Category</li>
+                        <li className="font-semibold text-gray-900">{ !subCategoryId ? 'Add Sub Category' : 'Update Sub Category' }</li>
                     </ol>
                 </nav>
 
@@ -84,7 +171,7 @@ let ErrorHandler = (event) => {
                         <h3 className="text-[24px] font-semibold 
                         bg-gradient-to-r from-indigo-600 to-indigo-500
                         py-3 px-5 rounded-t-lg text-white border border-indigo-500">
-                            Add New Sub Category
+                            { !subCategoryId ? 'Add Sub Category' : 'Update Sub Category' }
                         </h3>
 
                         <form
@@ -127,6 +214,7 @@ let ErrorHandler = (event) => {
 
                                     <input
                                         type="file"
+                                        name='image'
                                         accept="image/*"
                                         onChange={handleimagechange}
                                         className="absolute inset-0 opacity-0 cursor-pointer"
@@ -149,15 +237,18 @@ let ErrorHandler = (event) => {
 
                                     <select
                                         onChange={ErrorHandler}
-                                        name="parent_id"
+                                        name="parent_category_id"
                                         defaultValue=""
-                                        className="text-[17px] border cursor-pointer border-slate-300 text-gray-900 rounded-lg 
-    focus:ring-2 focus:ring-indigo-400 focus:border-indigo-500 
-    block w-full py-2.5 px-3"
+                                        className="text-[17px] border cursor-pointer border-slate-300 text-gray-900 rounded-lg focus:ring-2 focus:ring-indigo-400 focus:border-indigo-500 block w-full py-2.5 px-3"
                                     >
                                         <option value="">Select Category</option>
-                                        <option value="1">Electronics</option>
-                                        <option value="2">Clothes</option>
+                                        {
+                                            parentCategories.map((v,i) => {
+                                            return(
+                                                <option value={ v._id } selected={ subCategoryDetails?.parent_category_id?._id == v._id ? 'selected' : '' }>{ v.name }</option>
+                                            )
+                                            })
+                                        }
                                     </select>
 
                                     {errors.includes("parent_id") && (
@@ -176,6 +267,7 @@ let ErrorHandler = (event) => {
                                         type="text"
                                         name="name"
                                         autoComplete="off"
+                                        defaultValue={subCategoryDetails.name}
                                         onKeyUp={ErrorHandler}
                                         className="text-[17px] border border-slate-300 text-gray-900 rounded-lg 
                                         focus:ring-2 focus:ring-indigo-400 focus:border-indigo-500
@@ -198,6 +290,7 @@ let ErrorHandler = (event) => {
                                     <input
                                         type="number"
                                         name="order"
+                                        defaultValue={subCategoryDetails.order}
                                         min={1}
                                         autoComplete="off"
                                         className="text-[17px] border border-slate-300 text-gray-900 rounded-lg 
@@ -205,6 +298,12 @@ let ErrorHandler = (event) => {
                                         block w-full py-2.5 px-3"
                                         placeholder="Enter order number"
                                     />
+
+                                    {errors.includes("order") && (
+                                        <p className="text-red-600 text-sm mt-1">
+                                            Order is required
+                                        </p>
+                                    )}
                                 </div>
 
                                 <div className='flex justify-end'>
@@ -215,7 +314,7 @@ let ErrorHandler = (event) => {
                                         focus:ring-4 focus:ring-indigo-300
                                         font-medium rounded-lg text-md px-6 py-2.5 shadow-sm transition-all"
                                     >
-                                        Submit
+                                        { subCategoryId ? 'Update' : 'Submit' }
                                     </button>
                                 </div>
 
