@@ -2,7 +2,8 @@ const express = require('express');
 const multer  = require('multer')
 var upload = multer({ dest: 'uploads/users' })
 var path = require('path');
-const { register, login } = require('../../controllers/website/User.controller');
+const { register, login, viewProfile, updateProfile, changePassword } = require('../../controllers/website/User.controller');
+const validateToken = require('../../middleware/website/loginMiddleware');
 
 const route = express.Router();
 
@@ -25,9 +26,11 @@ module.exports = server  => {
 
     route.post('/login', upload.none(), login)
 
-    // route.post('/view', upload.none(), view)
+    route.post('/view-profile', validateToken, upload.none(), viewProfile)
 
-    // route.put('/update/:id', upload.single('image'), update)
+    route.put('/update-profile', validateToken, upload.none(), updateProfile)
+
+    route.put('/change-password', validateToken, upload.none(), changePassword)
 
     // route.post('/details/:id', upload.none(), details)
 
